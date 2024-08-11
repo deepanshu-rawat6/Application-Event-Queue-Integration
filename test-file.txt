@@ -1,0 +1,2 @@
+2024-08-11T14:29:04.866  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2024-08-11T14:29:16.800  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.ListBuckets => 200

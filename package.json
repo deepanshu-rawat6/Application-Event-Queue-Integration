@@ -1,0 +1,33 @@
+{
+  "name": "gemindid-systems",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "createS3Bucket": "ts-node ./src/createS3-bucket.ts",
+    "createSQS": "ts-node ./src/createSQS.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-lambda-powertools/logger": "^2.7.0",
+    "@aws-sdk/client-s3": "^3.627.0",
+    "@aws-sdk/client-sqs": "^3.624.0",
+    "@types/express": "^4.17.21",
+    "aws-sdk": "^2.1672.0",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.17.0",
+    "typescript": "^5.5.4"
+  }
+}
