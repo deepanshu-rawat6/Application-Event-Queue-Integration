@@ -71,7 +71,7 @@ awslocal lambda create-function --function-name S3ToSQSFunction \
 ### S3 bucket to trigger lambda function on object creation
 
 ```bash
-awslocal s3api put-bucket-notification-configuration --bucket document-bucket --notification-configuration '{
+awslocal s3api put-bucket-notification-configuration --bucket localstack-bucket --notification-configuration '{
     "LambdaFunctionConfigurations": [
         {
             "LambdaFunctionArn": "arn:aws:lambda:us-east-1:000000000000:function:S3ToSQSFunction",
