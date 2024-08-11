@@ -1,0 +1,15 @@
+{
+  "name": "publisher-handler",
+  "version": "1.0.0",
+  "main": "lambda-handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.624.0"
+  }
+}
