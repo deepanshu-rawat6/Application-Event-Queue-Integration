@@ -144,48 +144,6 @@ const createSQSQueue = async () => {
 awslocal sqs list-queues
 ```
 
-### Lambda function from SQS to processing logs(consumer function)
-
-#### Zip the processing Lambda function code:
-
-```bash
-zip function.zip index.mjs node_modules/
-```
-
-
-#### To create lambda function, run the command:
-
-```bash
- awslocal lambda create-function --function-name SQSToProcessing \
-    --zip-file fileb://function.zip \
-    --handler index.handler \
-    --runtime nodejs20.x \
-    --role arn:aws:iam::000000000000:role/lambda-role
-```
-
-#### Enable X-Ray tracing for the Lambda function:
-
-```bash
-awslocal lambda update-function-configuration --function-name SQSToProcessing \
-    --tracing-config Mode=Active
-```
-
-#### Set up the SQS trigger with a batch size and maximum concurrency:
-
-```bash
-awslocal lambda create-event-source-mapping --function-name SQSToProcessing \
-    --event-source-arn arn:aws:sqs:us-east-1:000000000000:localstack-queue \
-    --batch-size 1 --enabled
-```
-
-#### To ensure that a maximum of three Lambda functions run concurrently, set the concurrency limit:
-
-Here we are making only 5 concurrent executions
-
-```bash
-awslocal lambda put-function-concurrency --function-name SQSToProcessing \
-    --reserved-concurrent-executions 5
-```
 
 ## Implementation
 
