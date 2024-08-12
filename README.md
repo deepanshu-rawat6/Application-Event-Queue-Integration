@@ -10,7 +10,7 @@ This guide walks you through setting up an application event queue integration u
 
 ## Architecture
 
-
+![architecture](.img/arch.png)
 
 ## Setup
 
@@ -147,3 +147,19 @@ Here we are making only 5 concurrent executions
 awslocal lambda put-function-concurrency --function-name SQSToProcessing \
     --reserved-concurrent-executions 5
 ```
+
+## Implementation
+
+### Publishing messages
+
+![publishing_messages](.img/publishing_messages.png)
+
+## Cloudwatch metrics
+
+### Message received from SQS
+
+![message_received](.img/message_received.png)
+
+### Messages deleted from SQS
+
+![messages_deleted](.img/message_deleted.png)
