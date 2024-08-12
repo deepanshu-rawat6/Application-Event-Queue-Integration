@@ -1,7 +1,7 @@
-const { SQSClient, SendMessageCommand } = require("@aws-sdk/client-sqs");
+import { SQSClient, SendMessageCommand } from "@aws-sdk/client-sqs";
 
 const sqs = new SQSClient({
-    endpoint: 'http://localhost:4566',
+    endpoint: 'http://host.docker.internal:4566',
     region: 'us-east-1',
     credentials: {
         accessKeyId: 'test',
@@ -9,7 +9,7 @@ const sqs = new SQSClient({
     },
 });
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
     const record = event.Records[0];
     const bucketName = record.s3.bucket.name;
     const objectKey = record.s3.object.key;
@@ -20,7 +20,7 @@ exports.handler = async (event) => {
     });
 
     const params = {
-        QueueUrl: 'http://localhost:4566//000000000000/localstack-queue',
+        QueueUrl: 'http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/localstack-queue',
         MessageBody: messageBody,
     };
 
