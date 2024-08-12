@@ -31,18 +31,35 @@ export const uploadFileToS3 = async () => {
         throw new Error('AWS_BUCKET environment variable is not defined.');
     }
 
-    const params = {
-        Bucket: bucketName,
-        Key: fileName,
-        Body: data
-    };
+    for (let i = 1; i <= 100; i++) {
+        const fileName = `testFile_${i}`;  // Unique file name for each upload
+        const params = {
+            Bucket: bucketName,
+            Key: fileName,
+            Body: data
+        };
 
-    try {
-        const command = new PutObjectCommand(params);
-        const response = await s3.send(command);
-        console.log('File uploaded successfully', response);
-    } catch (s3err) {
-        console.error('Error uploading file:', s3err);
+        try {
+            const command = new PutObjectCommand(params);
+            const response = await s3.send(command);
+            console.log(`File ${fileName} uploaded successfully`, response);
+        } catch (s3err) {
+            console.error(`Error uploading file ${fileName}:`, s3err);
+        }
     }
+
+    // const params = {
+    //     Bucket: bucketName,
+    //     Key: fileName,
+    //     Body: data
+    // };
+
+    // try {
+    //     const command = new PutObjectCommand(params);
+    //     const response = await s3.send(command);
+    //     console.log('File uploaded successfully', response);
+    // } catch (s3err) {
+    //     console.error('Error uploading file:', s3err);
+    // }
 
 }
