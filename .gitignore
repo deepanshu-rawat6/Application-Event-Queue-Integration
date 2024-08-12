@@ -2,6 +2,8 @@
 *.env
 dummyData.ts
 
+**/function.zip
+
 # Logs
 logs
 *.log
