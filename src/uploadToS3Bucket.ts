@@ -20,7 +20,7 @@ export const uploadFileToS3 = async () => {
         throw new Error('AWS_BUCKET environment variable is not defined.');
     }
 
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 10000; i++) {
         const fileName = `testFile_${i}`;  // Unique file name for each upload
         const params = {
             Bucket: bucketName,
